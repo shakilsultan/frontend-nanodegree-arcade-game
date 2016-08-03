@@ -110,6 +110,8 @@ var Engine = (function(global) {
                 $('#lives').text('Remaining Lives: ' + player.lives);
                 if (player.lives === 0) {
                     player.lives = 4;
+                    player.score = 0;
+                    $('#score').text('Score: ' + player.score);
                 }
             }
         }
