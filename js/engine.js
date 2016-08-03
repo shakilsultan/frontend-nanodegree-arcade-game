@@ -13,7 +13,6 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -107,10 +106,10 @@ var Engine = (function(global) {
                 player.y < allEnemies[enemy].y + 50 && player.y + 50 > allEnemies[enemy].y) {
                 player.reset();
                 //  OPTIONAL: Player's Lives
-                lives = lives - 1;
-                $('#lives').text('Remaining Lives: ' + lives);
-                if (lives === 0) {
-                    lives = 4;
+                player.lives -= 1;
+                $('#lives').text('Remaining Lives: ' + player.lives);
+                if (player.lives === 0) {
+                    player.lives = 4;
                 }
             }
         }
@@ -127,12 +126,12 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/water-block.png', // Top row is water
+                'images/stone-block.png', // Row 1 of 3 of stone
+                'images/stone-block.png', // Row 2 of 3 of stone
+                'images/stone-block.png', // Row 3 of 3 of stone
+                'images/grass-block.png', // Row 1 of 2 of grass
+                'images/grass-block.png' // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,

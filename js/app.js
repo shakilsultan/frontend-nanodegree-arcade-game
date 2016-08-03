@@ -1,8 +1,3 @@
-// OPTIONAL: adding a variable to track score and lives.
-
-var score = 0;
-var lives = 3;
-
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -44,24 +39,24 @@ var Player = function() {
     this.x = 0;
     this.y = 400;
     this.speed = 10;
-}
+    this.score = 0;
+    this.lives = 3;
+};
 
 Player.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x * (dt);
-    this.y * (dt);
     if (this.y <= 0) {
-        player.reset();
-        score = score + 10;
-        $('#score').text('Score: ' + score);
+        this.reset();
+        this.score += 10;
+        $('#score').text('Score: ' + this.score);
     }
-}
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.handleInput = function(key) {
     if (key === 'left' && this.x > 0) {
@@ -73,14 +68,14 @@ Player.prototype.handleInput = function(key) {
     } else if (key === 'down' && this.y < 400) {
         this.y += 83;
     }
-}
+};
 
 // TODO: Player resets to the initial position.
 Player.prototype.reset = function() {
     this.x = 0;
     this.y = 400;
 
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
